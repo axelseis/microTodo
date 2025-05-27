@@ -10,7 +10,8 @@ export default defineConfig({
       name: 'list-task',
       remotes: {
         'create-task': 'http://localhost:5001/assets/remoteEntry.js',
-        'remove-task': 'http://localhost:5003/assets/remoteEntry.js'
+        'remove-task': 'http://localhost:5003/assets/remoteEntry.js',
+        editTask: 'http://localhost:5004/assets/remoteEntry.js'
       },
       shared: ['vue', 'pinia']
     })

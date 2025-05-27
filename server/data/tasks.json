@@ -1,14 +1,25 @@
 {
   "tasks": [
     {
+      "id": 1,
+      "title": "Completar el proyecto",
+      "description": "Terminar el desarrollo del proyecto de tareas",
+      "dueDate": "2024-03-20",
+      "priority": "low"
+    },
+    {
       "id": 2,
-      "title": "Crear API REST",
-      "description": "Desarrollar una API REST con Express.js"
+      "title": "Revisar documentación",
+      "description": "Actualizar la documentación del proyecto",
+      "dueDate": "2024-03-25",
+      "priority": "medium"
     },
     {
       "id": 3,
-      "title": "task one",
-      "description": "f dsf sdf sdf sdf"
+      "title": "Realizar pruebas",
+      "description": "Ejecutar pruebas unitarias y de integración",
+      "dueDate": "2024-03-22",
+      "priority": "low"
     }
   ]
 }

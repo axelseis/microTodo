@@ -42,11 +42,10 @@ app.get('/tasks/:id', async (req, res) => {
   try {
     const data = await readData()
     const task = data.tasks.find(t => t.id === parseInt(req.params.id))
-    if (task) {
-      res.json(task)
-    } else {
-      res.status(404).json({ error: 'Tarea no encontrada' })
+    if (!task) {
+      return res.status(404).json({ error: 'Tarea no encontrada' })
     }
+    res.json(task)
   } catch (error) {
     res.status(500).json({ error: 'Error al leer la tarea' })
   }
@@ -59,7 +58,9 @@ app.post('/tasks', async (req, res) => {
     const newTask = {
       id: Math.max(0, ...data.tasks.map(t => t.id)) + 1,
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      dueDate: req.body.dueDate || null,
+      priority: req.body.priority || 'medium'
     }
     data.tasks.push(newTask)
     await writeData(data)
@@ -73,18 +74,22 @@ app.post('/tasks', async (req, res) => {
 app.put('/tasks/:id', async (req, res) => {
   try {
     const data = await readData()
-    const index = data.tasks.findIndex(t => t.id === parseInt(req.params.id))
-    if (index !== -1) {
-      data.tasks[index] = {
-        ...data.tasks[index],
-        title: req.body.title,
-        description: req.body.description
-      }
-      await writeData(data)
-      res.json(data.tasks[index])
-    } else {
-      res.status(404).json({ error: 'Tarea no encontrada' })
+    const taskIndex = data.tasks.findIndex(t => t.id === parseInt(req.params.id))
+    if (taskIndex === -1) {
+      return res.status(404).json({ error: 'Tarea no encontrada' })
     }
+
+    const updatedTask = {
+      ...data.tasks[taskIndex],
+      title: req.body.title || data.tasks[taskIndex].title,
+      description: req.body.description || data.tasks[taskIndex].description,
+      dueDate: req.body.dueDate || data.tasks[taskIndex].dueDate,
+      priority: req.body.priority || data.tasks[taskIndex].priority
+    }
+
+    data.tasks[taskIndex] = updatedTask
+    await writeData(data)
+    res.json(updatedTask)
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar la tarea' })
   }
@@ -94,14 +99,14 @@ app.put('/tasks/:id', async (req, res) => {
 app.delete('/tasks/:id', async (req, res) => {
   try {
     const data = await readData()
-    const index = data.tasks.findIndex(t => t.id === parseInt(req.params.id))
-    if (index !== -1) {
-      data.tasks.splice(index, 1)
-      await writeData(data)
-      res.status(204).send()
-    } else {
-      res.status(404).json({ error: 'Tarea no encontrada' })
+    const taskIndex = data.tasks.findIndex(t => t.id === parseInt(req.params.id))
+    if (taskIndex === -1) {
+      return res.status(404).json({ error: 'Tarea no encontrada' })
     }
+
+    data.tasks.splice(taskIndex, 1)
+    await writeData(data)
+    res.status(204).send()
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar la tarea' })
   }

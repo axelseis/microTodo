@@ -17,12 +17,12 @@ const CreateTask = defineAsyncComponent({
 
 <template>
   <div class="app">
-    <header class="mb-8">
+    <header class="p-4 mb-8 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-gray-900">Lista de Tareas</h1>
+      <CreateTask />
     </header>
     
     <div class="space-y-8">
-      <CreateTask />
       <TaskList />
     </div>
   </div>
