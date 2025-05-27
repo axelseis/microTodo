@@ -1,51 +1,113 @@
-# Todo Microfrontend
+# MicroTodo - Aplicación de Tareas Modular
 
-Una aplicación microfrontend para gestionar tareas, construida con Vue 3, Vite, Pinia y Tailwind CSS.
+MicroTodo es una aplicación de gestión de tareas construida con una arquitectura de microfrontends, utilizando Vue.js y Module Federation.
 
 ## Estructura del Proyecto
 
-```
-src/
-├── assets/          # Archivos estáticos y estilos
-├── components/      # Componentes Vue reutilizables
-├── composables/     # Composables Vue
-├── layouts/         # Layouts
-├── modules/         # Módulos microfrontend
-│   ├── tasks/      # Módulo de tareas
-│   └── shared/     # Módulo compartido
-├── router/         # Configuración de Vue Router
-├── stores/         # Pinia stores
-└── views/          # Vistas principales
-```
+El proyecto está dividido en los siguientes módulos:
+
+- **listTask** (Host): Módulo principal que muestra la lista de tareas y orquesta los demás módulos
+- **createTask**: Módulo para crear nuevas tareas
+- **editTask**: Módulo para editar tareas existentes
+- **removeTask**: Módulo para eliminar tareas
+- **server**: API REST para gestionar las tareas
 
 ## Características
 
-- Crear, leer, actualizar y eliminar tareas
-- Arquitectura microfrontend
-- Gestión de estado con Pinia
-- Estilos con Tailwind CSS
-- Responsive
+- Arquitectura de microfrontends con Module Federation
+- Gestión completa de tareas (CRUD)
+- Interfaz de usuario moderna y responsiva con Tailwind CSS
+- Estado global con Pinia
+- API REST con Express.js
+- Almacenamiento persistente en JSON
 
-## Setup
+## Requisitos
 
+- Node.js 16+
+- npm 7+
+
+## Instalación
+
+1. Clonar el repositorio:
 ```bash
-# Instalar dependencias
-npm install
-
-# Iniciar servidor de desarrollo
-npm run dev
-
-# Construir para producción
-npm run build
-
-# Previsualizar build de producción
-npm run preview
+git clone <url-del-repositorio>
+cd microtodo
 ```
 
-## Tech Stack
+2. Instalar dependencias de cada módulo:
+```bash
+# Instalar dependencias del servidor
+cd server
+npm install
 
-- Vue 3
+# Instalar dependencias de los módulos
+cd ../listTask
+npm install
+cd ../createTask
+npm install
+cd ../editTask
+npm install
+cd ../removeTask
+npm install
+```
+
+## Ejecución
+
+1. Iniciar el servidor:
+```bash
+cd server
+npm run dev
+```
+
+2. En terminales separadas, iniciar cada módulo:
+```bash
+# Módulo host (listTask)
+cd listTask
+npm run dev
+
+# Módulo de creación
+cd createTask
+npm run dev
+
+# Módulo de edición
+cd editTask
+npm run dev
+
+# Módulo de eliminación
+cd removeTask
+npm run dev
+```
+
+Los módulos estarán disponibles en:
+- listTask: http://localhost:5002
+- createTask: http://localhost:5001
+- editTask: http://localhost:5004
+- removeTask: http://localhost:5003
+- server: http://localhost:3000
+
+## Estructura de Datos
+
+Las tareas tienen la siguiente estructura:
+```json
+{
+  "id": 1,
+  "title": "Título de la tarea",
+  "description": "Descripción de la tarea",
+  "dueDate": "2024-03-20",
+  "priority": "high" // "high", "medium", "low"
+}
+```
+
+## Tecnologías Utilizadas
+
+- Vue.js 3
 - Vite
+- Module Federation
 - Pinia
-- Vue Router
-- Tailwind CSS 
+- Tailwind CSS
+- Express.js
+- CORS
+
+## Licencia
+
+MIT 

@@ -8,6 +8,7 @@ API REST para gestionar tareas, construida con Express.js.
 - Almacenamiento en archivo JSON local
 - CORS habilitado
 - Manejo de errores
+- Soporte para fecha de vencimiento y prioridad
 
 ## Endpoints
 
@@ -17,31 +18,50 @@ API REST para gestionar tareas, construida con Express.js.
 - `PUT /tasks/:id` - Actualizar una tarea
 - `DELETE /tasks/:id` - Eliminar una tarea
 
+## Estructura de Datos
+
+Las tareas tienen la siguiente estructura:
+```json
+{
+  "id": 1,
+  "title": "Título de la tarea",
+  "description": "Descripción de la tarea",
+  "dueDate": "2024-03-20",
+  "priority": "high" // "high", "medium", "low"
+}
+```
+
 ## Instalación
 
 ```bash
-# Instalar dependencias
 npm install
+```
 
-# Iniciar servidor en modo desarrollo
+## Desarrollo
+
+```bash
 npm run dev
+```
 
-# Iniciar servidor en modo producción
+El servidor estará disponible en http://localhost:3000
+
+## Producción
+
+```bash
 npm start
 ```
 
-## Estructura de Datos
+## Dependencias
 
-Las tareas se almacenan en `data/tasks.json` con la siguiente estructura:
+- Express.js
+- CORS
+- Node.js File System (fs/promises)
 
-```json
-{
-  "tasks": [
-    {
-      "id": 1,
-      "title": "Título de la tarea",
-      "description": "Descripción de la tarea"
-    }
-  ]
-}
+## Estructura del Proyecto
+
+```
+server/
+├── data/           # Datos persistentes
+│   └── tasks.json  # Archivo JSON de tareas
+└── index.js        # Punto de entrada de la aplicación
 ``` 
