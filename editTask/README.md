@@ -1,64 +1,64 @@
-# Módulo EditTask
+# EditTask Module
 
-Módulo para editar tareas existentes en la aplicación.
+Module for editing existing tasks in the application.
 
-## Características
+## Features
 
-- Formulario para editar tareas
-- Modal de edición
-- Validación de campos
-- Integración con el módulo host mediante eventos
-- Diseño responsivo con Tailwind CSS
-- Soporte para fecha de vencimiento y prioridad
+- Form for editing tasks
+- Edit modal
+- Field validation
+- Integration with host module through events
+- Responsive design with Tailwind CSS
+- Support for due date and priority
 
-## Dependencias
+## Dependencies
 
 - Vue.js 3
 - Pinia
 - Tailwind CSS
 - Module Federation
 
-## Instalación
+## Installation
 
 ```bash
 npm install
 ```
 
-## Desarrollo
+## Development
 
 ```bash
 npm run dev
 ```
 
-El módulo estará disponible en http://localhost:5004
+The module will be available at http://localhost:5004
 
-## Construcción
+## Build
 
 ```bash
 npm run build
 ```
 
-## Estructura del Módulo
+## Module Structure
 
 ```
 src/
-├── components/        # Componentes Vue
-│   └── EditTask.vue  # Componente principal de edición
+├── components/        # Vue components
+│   └── EditTask.vue  # Main edit component
 ├── store/            # Pinia stores
-│   └── editTaskStore.js # Store para gestión de edición
-└── services/         # Servicios
-    └── editTaskService.js # Servicio para comunicación con API
+│   └── editTaskStore.js # Edit management store
+└── services/         # Services
+    └── editTaskService.js # API communication service
 ```
 
-## Uso
+## Usage
 
-El módulo expone el componente `EditTask` que puede ser importado por el módulo host:
+The module exposes the `EditTask` component that can be imported by the host module:
 
 ```javascript
 import EditTask from 'editTask/EditTask'
 ```
 
-El componente requiere las siguientes props:
-- `task`: Objeto con los datos de la tarea a editar
+The component requires the following props:
+- `task`: Object containing the task data to edit
 
-El componente emite un evento `task-updated` cuando se actualiza una tarea. 
+The component emits a `task-updated` event when a task is updated. 

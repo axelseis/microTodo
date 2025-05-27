@@ -1,60 +1,60 @@
-# Módulo CreateTask
+# CreateTask Module
 
-Módulo para crear nuevas tareas en la aplicación.
+Module for creating new tasks in the application.
 
-## Características
+## Features
 
-- Formulario para crear nuevas tareas
-- Validación de campos
-- Modal de creación
-- Integración con el módulo host mediante eventos
-- Diseño responsivo con Tailwind CSS
+- Form for creating new tasks
+- Field validation
+- Creation modal
+- Integration with host module through events
+- Responsive design with Tailwind CSS
 
-## Dependencias
+## Dependencies
 
 - Vue.js 3
 - Pinia
 - Tailwind CSS
 - Module Federation
 
-## Instalación
+## Installation
 
 ```bash
 npm install
 ```
 
-## Desarrollo
+## Development
 
 ```bash
 npm run dev
 ```
 
-El módulo estará disponible en http://localhost:5001
+The module will be available at http://localhost:5001
 
-## Construcción
+## Build
 
 ```bash
 npm run build
 ```
 
-## Estructura del Módulo
+## Module Structure
 
 ```
 src/
-├── components/         # Componentes Vue
-│   └── CreateTask.vue  # Componente principal de creación
+├── components/         # Vue components
+│   └── CreateTask.vue  # Main creation component
 ├── store/             # Pinia stores
-│   └── taskStore.js   # Store para gestión de tareas
-└── services/          # Servicios
-    └── taskService.js # Servicio para comunicación con API
+│   └── taskStore.js   # Task management store
+└── services/          # Services
+    └── taskService.js # API communication service
 ```
 
-## Uso
+## Usage
 
-El módulo expone el componente `CreateTask` que puede ser importado por el módulo host:
+The module exposes the `CreateTask` component that can be imported by the host module:
 
 ```javascript
 import CreateTask from 'create-task/CreateTask'
 ```
 
-El componente emite un evento `task-created` cuando se crea una nueva tarea. 
+The component emits a `task-created` event when a new task is created. 

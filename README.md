@@ -1,46 +1,46 @@
-# MicroTodo - Aplicación de Tareas Modular
+# MicroTodo - Modular Task Application
 
-MicroTodo es una aplicación de gestión de tareas construida con una arquitectura de microfrontends, utilizando Vue.js y Module Federation.
+MicroTodo is a task management application built with a microfrontend architecture, using Vue.js and Module Federation.
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto está dividido en los siguientes módulos:
+The project is divided into the following modules:
 
-- **listTask** (Host): Módulo principal que muestra la lista de tareas y orquesta los demás módulos
-- **createTask**: Módulo para crear nuevas tareas
-- **editTask**: Módulo para editar tareas existentes
-- **removeTask**: Módulo para eliminar tareas
-- **server**: API REST para gestionar las tareas
+- **listTask** (Host): Main module that displays the task list and orchestrates other modules
+- **createTask**: Module for creating new tasks
+- **editTask**: Module for editing existing tasks
+- **removeTask**: Module for deleting tasks
+- **server**: REST API for task management
 
-## Características
+## Features
 
-- Arquitectura de microfrontends con Module Federation
-- Gestión completa de tareas (CRUD)
-- Interfaz de usuario moderna y responsiva con Tailwind CSS
-- Estado global con Pinia
-- API REST con Express.js
-- Almacenamiento persistente en JSON
+- Microfrontend architecture with Module Federation
+- Complete task management (CRUD)
+- Modern and responsive UI with Tailwind CSS
+- Global state management with Pinia
+- REST API with Express.js
+- Persistent JSON storage
 
-## Requisitos
+## Requirements
 
 - Node.js 16+
 - npm 7+
 
-## Instalación
+## Installation
 
-1. Clonar el repositorio:
+1. Clone the repository:
 ```bash
-git clone <url-del-repositorio>
+git clone <repository-url>
 cd microtodo
 ```
 
-2. Instalar dependencias de cada módulo:
+2. Install dependencies for each module:
 ```bash
-# Instalar dependencias del servidor
+# Install server dependencies
 cd server
 npm install
 
-# Instalar dependencias de los módulos
+# Install module dependencies
 cd ../listTask
 npm install
 cd ../createTask
@@ -51,60 +51,58 @@ cd ../removeTask
 npm install
 ```
 
-## Ejecución
+## Execution
 
-### Desarrollo
-
-1. Iniciar el servidor:
+1. Start the server:
 ```bash
 cd server
 npm run dev
 ```
 
-2. En terminales separadas, construir y ejecutar cada módulo:
+2. In separate terminals, build and run each module:
 ```bash
-# Módulo host (listTask)
+# Host module (listTask)
 cd listTask
 npm run build
 npm run preview
 
-# Módulo de creación
+# Creation module
 cd createTask
 npm run build
 npm run preview
 
-# Módulo de edición
+# Edit module
 cd editTask
 npm run build
 npm run preview
 
-# Módulo de eliminación
+# Remove module
 cd removeTask
 npm run build
 npm run preview
 ```
 
-Los módulos estarán disponibles en:
+Modules will be available at:
 - listTask: http://localhost:5002
 - createTask: http://localhost:5001
 - editTask: http://localhost:5004
 - removeTask: http://localhost:5003
 - server: http://localhost:3000
 
-## Estructura de Datos
+## Data Structure
 
-Las tareas tienen la siguiente estructura:
+Tasks have the following structure:
 ```json
 {
   "id": 1,
-  "title": "Título de la tarea",
-  "description": "Descripción de la tarea",
+  "title": "Task title",
+  "description": "Task description",
   "dueDate": "2024-03-20",
   "priority": "high" // "high", "medium", "low"
 }
 ```
 
-## Tecnologías Utilizadas
+## Technologies Used
 
 - Vue.js 3
 - Vite
@@ -114,6 +112,6 @@ Las tareas tienen la siguiente estructura:
 - Express.js
 - CORS
 
-## Licencia
+## License
 
 MIT 
