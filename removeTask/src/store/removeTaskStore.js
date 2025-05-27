@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { removeTask as removeTaskService } from '../services/taskService'
 
 const API_URL = 'http://localhost:3000'
 
@@ -13,16 +14,7 @@ export const useRemoveTaskStore = defineStore('removeTask', {
       this.loading = true
       this.error = null
       try {
-        const response = await fetch(`${API_URL}/tasks/${taskId}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        })
-        
-        if (!response.ok) {
-          throw new Error('Error al eliminar la tarea')
-        }
+        await removeTaskService(taskId)
         
         // Disparar evento personalizado para notificar a otros módulos
         window.dispatchEvent(new CustomEvent('task-removed', {

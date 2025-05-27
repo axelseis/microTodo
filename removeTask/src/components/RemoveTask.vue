@@ -4,7 +4,7 @@ import { useRemoveTaskStore } from '../store/removeTaskStore'
 
 const props = defineProps({
   taskId: {
-    type: String,
+    type: [String, Number],
     required: true
   },
   taskTitle: {
