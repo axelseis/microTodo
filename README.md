@@ -53,29 +53,35 @@ npm install
 
 ## Ejecución
 
+### Desarrollo
+
 1. Iniciar el servidor:
 ```bash
 cd server
 npm run dev
 ```
 
-2. En terminales separadas, iniciar cada módulo:
+2. En terminales separadas, construir y ejecutar cada módulo:
 ```bash
 # Módulo host (listTask)
 cd listTask
-npm run dev
+npm run build
+npm run preview
 
 # Módulo de creación
 cd createTask
-npm run dev
+npm run build
+npm run preview
 
 # Módulo de edición
 cd editTask
-npm run dev
+npm run build
+npm run preview
 
 # Módulo de eliminación
 cd removeTask
-npm run dev
+npm run build
+npm run preview
 ```
 
 Los módulos estarán disponibles en:
